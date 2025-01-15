@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Utility;
-namespace Entities
+
+namespace Ricettario.Models
 {
-    public class Ricetta : Entity
+    public class Ricetta
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Il nome è obbligatorio")]
         [StringLength(200, ErrorMessage = "Il nome non può superare i 200 caratteri")]
         public string Nome { get; set; }
@@ -26,7 +28,5 @@ namespace Entities
 
         [StringLength(20, ErrorMessage = "La difficoltà non può superare i 20 caratteri")]
         public string? Difficolta { get; set; }
-
-        public Ricetta() { }
     }
 }

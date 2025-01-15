@@ -1,39 +1,62 @@
-﻿<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page - Ricettario</title>
-    <link rel="stylesheet" href="~/css/ricette/style.css">
-</head>
-<body>
-    <header>
-        <h1>Ricettario Web</h1>
-        <nav>
-            <ul>
-                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
-                <li><a href="#about">Chi Siamo</a></li>
-                <li><a href="#contact">Contatti</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <h2>Benvenuti nel Ricettario Web</h2>
-            <p>La tua raccolta personale di ricette!</p>
-        </section>
-        <section id="about">
-            <h2>Chi Siamo</h2>
-            <p>Un ricettario digitale per conservare e gestire le tue ricette preferite.</p>
-        </section>
-        <section id="contact">
-            <h2>Contattaci</h2>
-            <p>Email: info@ricettario.com</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Ricettario Web</p>
-    </footer>
-</body>
-</html>
+﻿@{
+    ViewData["Title"] = "Home Page - Ricettario";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <section id="home" class="text-center my-5">
+        <h2>Benvenuti nel Ricettario Web</h2>
+        <p class="lead">La tua raccolta personale di ricette!</p>
+    </section>
+
+    <section id="about" class="my-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2 class="text-center">Chi Siamo</h2>
+                <p class="text-center">
+                    Un ricettario digitale per conservare e gestire le tue ricette preferite.
+                    Organizza, crea e condividi le tue ricette in modo semplice e intuitivo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <i class="fas fa-book fa-3x mb-3"></i>
+                    <h3>Organizza</h3>
+                    <p>Gestisci tutte le tue ricette in un unico posto</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <i class="fas fa-edit fa-3x mb-3"></i>
+                    <h3>Crea</h3>
+                    <p>Aggiungi facilmente nuove ricette alla tua collezione</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <i class="fas fa-share-alt fa-3x mb-3"></i>
+                    <h3>Condividi</h3>
+                    <p>Condividi le tue ricette preferite con altri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="my-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2 class="text-center">Contattaci</h2>
+                <div class="contact-info text-center">
+                    <p><i class="fas fa-envelope me-2"></i>Email: info@ricettario.com</p>
+                    <p><i class="fas fa-phone me-2"></i>Tel: +39 123 456 7890</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Indirizzo: Via Example 123, Roma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

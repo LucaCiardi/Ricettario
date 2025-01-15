@@ -1,12 +1,10 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
-    // Validation for TempoPreparazione
+    // Enhanced validation for TempoPreparazione
     const tempoInput = document.getElementById('TempoPreparazione');
     if (tempoInput) {
         tempoInput.addEventListener('input', function (e) {
-            // Remove non-numeric characters
             this.value = this.value.replace(/[^0-9]/g, '');
 
-            // Ensure value is between 1 and 480
             if (this.value) {
                 const value = parseInt(this.value);
                 if (value < 1) this.value = '1';
@@ -15,17 +13,49 @@
         });
     }
 
-    // Form validation
+    // Enhanced form validation with client-side validation
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', function (e) {
-            const ingredienti = document.getElementById('Ingredienti').value.trim();
-            const istruzioni = document.getElementById('Istruzioni').value.trim();
-
-            if (!ingredienti || !istruzioni) {
+            if (!validateForm()) {
                 e.preventDefault();
-                alert('Ingredienti e istruzioni sono obbligatori');
             }
         });
     }
 });
+
+function validateForm() {
+    const ingredienti = document.getElementById('Ingredienti').value.trim();
+    const istruzioni = document.getElementById('Istruzioni').value.trim();
+    const nome = document.getElementById('Nome').value.trim();
+    const categoria = document.getElementById('Categoria').value.trim();
+
+    let isValid = true;
+    const errors = [];
+
+    if (!nome) {
+        errors.push('Il nome è obbligatorio');
+        isValid = false;
+    }
+
+    if (!categoria) {
+        errors.push('La categoria è obbligatoria');
+        isValid = false;
+    }
+
+    if (!ingredienti) {
+        errors.push('Gli ingredienti sono obbligatori');
+        isValid = false;
+    }
+
+    if (!istruzioni) {
+        errors.push('Le istruzioni sono obbligatorie');
+        isValid = false;
+    }
+
+    if (!isValid) {
+        alert(errors.join('\n'));
+    }
+
+    return isValid;
+}

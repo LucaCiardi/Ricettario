@@ -1,82 +1,98 @@
-﻿@using Entities
-@model Ricetta
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="utf-8" />
-    <title>Dettagli Ricetta</title>
-    <link rel="stylesheet" href="~/css/ricette/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <h1>Ricettario Web</h1>
-        <nav>
-            <ul>
-                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
-                <li><a href="@Url.Action("Index", "Home")#about">Chi Siamo</a></li>
-                <li><a href="@Url.Action("Index", "Home")#contact">Contatti</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+﻿@model Ricettario.Models.Ricetta
+
+@{
+    ViewData["Title"] = $"Dettagli - {Model.Nome}";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="detail-header">
         <h1>@Model.Nome</h1>
-        <div class="detail-container">
-            <div class="detail-row">
-                <p><strong>Nome:</strong> @Model.Nome</p>
-                <button class="edit-btn" data-field="Nome" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
+        <a href="@Url.Action("Elenco", "Ricetta")" class="back-link">
+            <i class="fas fa-arrow-left"></i> Torna all'elenco
+        </a>
+    </div>
+
+    <div class="detail-container">
+        <div class="detail-row">
+            <div class="detail-label">
+                <strong>Nome:</strong>
+                <p>@Model.Nome</p>
             </div>
-            <div class="detail-row">
-                <p><strong>Categoria:</strong> @Model.Categoria</p>
-                <button class="edit-btn" data-field="Categoria" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </div>
-            <div class="detail-row">
-                <p><strong>Tipo di Cucina:</strong> @Model.TipoCucina</p>
-                <button class="edit-btn" data-field="TipoCucina" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </div>
-            <div class="detail-row">
-                <p><strong>Tempo di Preparazione:</strong> @Model.TempoPreparazione minuti</p>
-                <button class="edit-btn" data-field="TempoPreparazione" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </div>
-            <div class="detail-row">
-                <p><strong>Difficoltà:</strong> @Model.Difficolta</p>
-                <button class="edit-btn" data-field="Difficolta" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </div>
-            <div class="detail-row ingredients">
-                <div>
-                    <strong>Ingredienti:</strong>
-                    <pre>@Model.Ingredienti</pre>
-                </div>
-                <button class="edit-btn" data-field="Ingredienti" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </div>
-            <div class="detail-row instructions">
-                <div>
-                    <strong>Istruzioni:</strong>
-                    <pre>@Model.Istruzioni</pre>
-                </div>
-                <button class="edit-btn" data-field="Istruzioni" data-id="@Model.Id">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-            </div>
+            <button class="edit-btn" data-field="Nome" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
         </div>
-        <a href="@Url.Action("Elenco", "Ricetta")" class="back-link">Torna all'elenco</a>
-    </main>
-    <footer>
-        <p>&copy; 2025 Ricettario Web</p>
-    </footer>
-    <script src="~/js/ricette/edit.js"></script>
-</body>
-</html>
+
+        <div class="detail-row">
+            <div class="detail-label">
+                <strong>Categoria:</strong>
+                <p>@Model.Categoria</p>
+            </div>
+            <button class="edit-btn" data-field="Categoria" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-label">
+                <strong>Tipo di Cucina:</strong>
+                <p>@(Model.TipoCucina ?? "Non specificato")</p>
+            </div>
+            <button class="edit-btn" data-field="TipoCucina" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-label">
+                <strong>Tempo di Preparazione:</strong>
+                <p>@Model.TempoPreparazione minuti</p>
+            </div>
+            <button class="edit-btn" data-field="TempoPreparazione" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-label">
+                <strong>Difficoltà:</strong>
+                <p>@(Model.Difficolta ?? "Non specificata")</p>
+            </div>
+            <button class="edit-btn" data-field="Difficolta" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </div>
+
+        <div class="detail-row ingredients">
+            <div class="detail-label">
+                <strong>Ingredienti:</strong>
+                <pre>@Model.Ingredienti</pre>
+            </div>
+            <button class="edit-btn" data-field="Ingredienti" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </div>
+
+        <div class="detail-row instructions">
+            <div class="detail-label">
+                <strong>Istruzioni:</strong>
+                <pre>@Model.Istruzioni</pre>
+            </div>
+            <button class="edit-btn" data-field="Istruzioni" data-id="@Model.Id">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <a href="@Url.Action("Elenco", "Ricetta")" class="btn btn-secondary">Torna all'elenco</a>
+        <form action="@Url.Action("Elimina", "Ricetta")" method="post"
+              onsubmit="return confirm('Sei sicuro di voler eliminare questa ricetta?');"
+              style="display: inline;">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger">Elimina ricetta</button>
+        </form>
+    </div>
+</div>

@@ -1,47 +1,65 @@
-﻿@using Entities
-@model List<Utility.Entity>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="utf-8" />
-    <title>Elenco Ricette</title>
-    <link rel="stylesheet" href="~/css/ricette/style.css">
-</head>
-<body>
-    <header>
-        <h1>Ricettario Web</h1>
-        <nav>
-            <ul>
-                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
-                <li><a href="@Url.Action("Index", "Home")#about">Chi Siamo</a></li>
-                <li><a href="@Url.Action("Index", "Home")#contact">Contatti</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+﻿@model IEnumerable<Ricettario.Models.Ricetta>
+
+@{
+    ViewData["Title"] = "Le Mie Ricette";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="page-header">
         <h1>Le Mie Ricette</h1>
-        <p>
-            <a href="@Url.Action("Aggiungi", "Ricetta")" class="add-button">
-                <span class="plus-icon">+</span> Aggiungi ricetta
-            </a>
-        </p>
-        @foreach (var r in Model)
-        {
-            var ricetta = (Ricetta)r;
-            <div class="ricetta-row">
-                <span class="titolo">@ricetta.Nome - @ricetta.Categoria</span>
-                <div class="actions">
-                    <a href="@Url.Action("Dettagli", "Ricetta", new { id = ricetta.Id })">Dettagli</a>
-                    <a href="@Url.Action("Elimina", "Ricetta", new { id = ricetta.Id })"
-                       onclick="return confirm('Sei sicuro di voler eliminare questa ricetta?');">Elimina</a>
+        <a href="@Url.Action("Aggiungi", "Ricetta")" class="add-button">
+            <span class="plus-icon">+</span> Aggiungi ricetta
+        </a>
+    </div>
+
+    <div class="filter-container">
+        <select id="categoryFilter" class="form-control">
+            <option value="">Tutte le categorie</option>
+            <option value="Antipasto">Antipasto</option>
+            <option value="Primo">Primo</option>
+            <option value="Secondo">Secondo</option>
+            <option value="Contorno">Contorno</option>
+            <option value="Dessert">Dessert</option>
+        </select>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+            <p>Non ci sono ancora ricette. Inizia aggiungendo la tua prima ricetta!</p>
+        </div>
+    }
+    else
+    {
+        <div class="ricette-list">
+            @foreach (var ricetta in Model)
+            {
+                <div class="ricetta-row">
+                    <div class="ricetta-info">
+                        <span class="titolo">@ricetta.Nome</span>
+                        <span class="categoria">@ricetta.Categoria</span>
+                        @if (!string.IsNullOrEmpty(ricetta.TipoCucina))
+                        {
+                            <span class="tipo-cucina">@ricetta.TipoCucina</span>
+                        }
+                    </div>
+                    <div class="actions">
+                        <a href="@Url.Action("Dettagli", "Ricetta", new { id = ricetta.Id })" class="btn btn-info">
+                            <i class="fas fa-info-circle"></i> Dettagli
+                        </a>
+                        <form action="@Url.Action("Elimina", "Ricetta")" method="post"
+                              onsubmit="return confirm('Sei sicuro di voler eliminare questa ricetta?');"
+                              style="display: inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@ricetta.Id" />
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Elimina
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <hr />
-        }
-    </main>
-    <footer>
-        <p>&copy; 2025 Ricettario Web</p>
-    </footer>
-</body>
-</html>
+            }
+        </div>
+    }
+</div>
