@@ -1,107 +1,70 @@
-# Recipe Manager
-
-A simple ASP.NET MVC CRUD application developed during the Generation Italy Junior .NET Developer bootcamp. The project demonstrates basic database operations through a recipe management system.
-
-## Description
-
-This web application allows users to manage cooking recipes through a simple interface. It showcases the implementation of CRUD (Create, Read, Update, Delete) operations using a single SQL Server table.
+# Ricettario Web
+A modern ASP.NET Core MVC recipe management application developed during the Generation Italy Junior .NET Developer bootcamp. The project implements a complete CRUD system with real-time editing and category filtering.
 
 ## Features
+- View and filter recipes by category
+- Add new recipes with form validation
+- View detailed recipe information
+- Real-time inline editing of recipe details
+- Delete recipes with confirmation
+- Responsive design with modern UI
 
-- View all recipes
-- Add new recipes
-- View recipe details
-- Edit recipe information inline
-- Delete recipes
-- Form validation
-- Responsive design
-
-## Technologies Used
-
-- ASP.NET MVC
+## Technologies
+- ASP.NET Core MVC
+- Entity Framework Core
 - SQL Server
-- HTML5
-- CSS3
-- JavaScript
-- Font Awesome
+- JavaScript (ES6+)
+- CSS3 with modern features
+- Font Awesome icons
 
-## Database Setup
-
-```sql
+## Database Structure
 CREATE TABLE Ricette (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    nome VARCHAR(200) NOT NULL,
-    categoria VARCHAR(50) NOT NULL,
-    tipoCucina VARCHAR(100),
-    tempoPreparazione INT,
-    ingredienti VARCHAR(MAX) NOT NULL,
-    istruzioni VARCHAR(MAX) NOT NULL,
-    difficolta VARCHAR(20)
+Id INT PRIMARY KEY IDENTITY(1,1),
+Nome VARCHAR(200) NOT NULL,
+Categoria VARCHAR(50) NOT NULL,
+TipoCucina VARCHAR(100),
+TempoPreparazione INT,
+Ingredienti VARCHAR(MAX) NOT NULL,
+Istruzioni VARCHAR(MAX) NOT NULL,
+Difficolta VARCHAR(20)
 );
-```
-
-## Prerequisites
-
-- Visual Studio 2022
-- SQL Server
-- .NET 6.0 or later
-
-## Installation
-
-1. Clone the repository
-```bash
-git clone [repository-url]
-```
-
-2. Create a database named 'Generation' in SQL Server
-
-3. Execute the SQL script provided above
-
-4. Update the connection string in `DAORicette.cs` if necessary
-
-5. Build and run the application in Visual Studio
+text
 
 ## Project Structure
-
-```
-RecipeManager/
+Ricettario/
 ├── Controllers/
-│   ├── HomeController.cs
-│   └── RicettaController.cs
+│ ├── HomeController.cs
+│ └── RicettaController.cs
 ├── Models/
-│   ├── Entities/
-│   │   └── Ricetta.cs
-│   └── DAOs/
-│       └── DAORicette.cs
+│ └── Ricetta.cs
+├── Data/
+│ └── RicettarioContext.cs
 ├── Views/
-│   ├── Home/
-│   │   └── Index.cshtml
-│   └── Ricetta/
-│       ├── Elenco.cshtml
-│       ├── Aggiungi.cshtml
-│       └── Dettagli.cshtml
+│ ├── Home/
+│ │ └── Index.cshtml
+│ ├── Ricetta/
+│ │ ├── Elenco.cshtml
+│ │ ├── Aggiungi.cshtml
+│ │ └── Dettagli.cshtml
+│ └── Shared/
+│ └── _Layout.cshtml
 └── wwwroot/
-    ├── css/
-    │   └── ricette/
-    │       └── style.css
-    └── js/
-        └── ricette/
-            ├── validation.js
-            └── edit.js
-```
+├── css/
+│ └── ricette/
+│ └── style.css
+└── js/
+└── ricette/
+├── validation.js
+└── edit.js
+text
 
-## Educational Context
+## Setup
+1. Clone the repository
+2. Update connection string in appsettings.json
+3. Run Entity Framework migrations
+4. Build and run the application
 
-This project was developed as part of the Generation Italy Junior .NET Developer bootcamp, focusing on:
-- CRUD operations implementation
-- Database management
-- ASP.NET MVC architecture
-- Web development best practices
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-*Developed as part of Generation Italy's Junior .NET Developer bootcamp*
+## Requirements
+- Visual Studio 2022
+- .NET 7.0 or later
+- SQL Server
