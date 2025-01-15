@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Ricettario</title>
+    <link rel="stylesheet" href="~/css/ricette/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ricettario Web</h1>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Benvenuti nel Ricettario Web</h2>
+            <p>La tua raccolta personale di ricette!</p>
+        </section>
+        <section id="about">
+            <h2>Chi Siamo</h2>
+            <p>Un ricettario digitale per conservare e gestire le tue ricette preferite.</p>
+        </section>
+        <section id="contact">
+            <h2>Contattaci</h2>
+            <p>Email: info@ricettario.com</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Ricettario Web</p>
+    </footer>
+</body>
+</html>

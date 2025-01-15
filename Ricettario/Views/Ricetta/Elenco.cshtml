@@ -1,0 +1,47 @@
+﻿@using Entities
+@model List<Utility.Entity>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <title>Elenco Ricette</title>
+    <link rel="stylesheet" href="~/css/ricette/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ricettario Web</h1>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
+                <li><a href="@Url.Action("Index", "Home")#about">Chi Siamo</a></li>
+                <li><a href="@Url.Action("Index", "Home")#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Le Mie Ricette</h1>
+        <p>
+            <a href="@Url.Action("Aggiungi", "Ricetta")" class="add-button">
+                <span class="plus-icon">+</span> Aggiungi ricetta
+            </a>
+        </p>
+        @foreach (var r in Model)
+        {
+            var ricetta = (Ricetta)r;
+            <div class="ricetta-row">
+                <span class="titolo">@ricetta.Nome - @ricetta.Categoria</span>
+                <div class="actions">
+                    <a href="@Url.Action("Dettagli", "Ricetta", new { id = ricetta.Id })">Dettagli</a>
+                    <a href="@Url.Action("Elimina", "Ricetta", new { id = ricetta.Id })"
+                       onclick="return confirm('Sei sicuro di voler eliminare questa ricetta?');">Elimina</a>
+                </div>
+            </div>
+            <hr />
+        }
+    </main>
+    <footer>
+        <p>&copy; 2025 Ricettario Web</p>
+    </footer>
+</body>
+</html>

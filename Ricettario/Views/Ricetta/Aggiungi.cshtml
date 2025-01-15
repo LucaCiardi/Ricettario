@@ -1,0 +1,97 @@
+﻿@using Entities
+@model Ricetta
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <title>Aggiungi Ricetta</title>
+    <link rel="stylesheet" href="~/css/ricette/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ricettario Web</h1>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
+                <li><a href="@Url.Action("Index", "Home")#about">Chi Siamo</a></li>
+                <li><a href="@Url.Action("Index", "Home")#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Aggiungi Nuova Ricetta</h2>
+            <form asp-action="Aggiungi" method="post">
+                <div class="form-group">
+                    <label for="Nome">Nome della ricetta:</label>
+                    <input type="text" id="Nome" name="Nome" required maxlength="200" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Categoria">Categoria:</label>
+                    <select id="Categoria" name="Categoria" required>
+                        <option value="">Seleziona categoria</option>
+                        <option value="Antipasto">Antipasto</option>
+                        <option value="Primo">Primo</option>
+                        <option value="Secondo">Secondo</option>
+                        <option value="Contorno">Contorno</option>
+                        <option value="Dessert">Dessert</option>
+                    </select>
+                    <span asp-validation-for="Categoria" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="TipoCucina">Tipo di cucina:</label>
+                    <input type="text" id="TipoCucina" name="TipoCucina" maxlength="100" />
+                    <span asp-validation-for="TipoCucina" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="TempoPreparazione">Tempo di preparazione (minuti):</label>
+                    <input type="number" id="TempoPreparazione" name="TempoPreparazione"
+                           min="1" max="480" required />
+                    <span asp-validation-for="TempoPreparazione" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Ingredienti">Ingredienti:</label>
+                    <textarea id="Ingredienti" name="Ingredienti" required
+                              rows="10" placeholder="Inserisci ogni ingrediente su una nuova riga"></textarea>
+                    <span asp-validation-for="Ingredienti" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Istruzioni">Istruzioni:</label>
+                    <textarea id="Istruzioni" name="Istruzioni" required
+                              rows="10" placeholder="Inserisci ogni passaggio su una nuova riga"></textarea>
+                    <span asp-validation-for="Istruzioni" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Difficolta">Difficoltà:</label>
+                    <select id="Difficolta" name="Difficolta">
+                        <option value="">Seleziona difficoltà</option>
+                        <option value="Facile">Facile</option>
+                        <option value="Media">Media</option>
+                        <option value="Difficile">Difficile</option>
+                    </select>
+                    <span asp-validation-for="Difficolta" class="text-danger"></span>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit">Salva</button>
+                    <a href="@Url.Action("Elenco", "Ricetta")" class="cancel-link">Annulla</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ricettario Web</p>
+    </footer>
+    <script src="~/js/ricette/validation.js"></script>
+</body>
+</html>
