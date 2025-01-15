@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ricettario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/ricette/style.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <h1>Ricettario Web</h1>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Elenco", "Ricetta")">Ricette</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Ricettario Web</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous"></script>
+    <script src="~/js/ricette/validation.js" asp-append-version="true"></script>
+    <script src="~/js/ricette/edit.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @* Add this for debugging *@
+    <script>
+        $(document).ready(function() {
+            console.log('jQuery loaded');
+            if (typeof editInit === 'function') {
+                console.log('edit.js loaded');
+            }
+        });
+    </script>
+</body>
+</html>

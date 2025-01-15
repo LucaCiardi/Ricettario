@@ -219,3 +219,240 @@ pre {
     .add-button:hover {
         background: #219a52;
     }
+/* Add these to your existing style.css */
+
+/* Validation styling */
+.validation-summary-errors {
+    color: #e74c3c;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e74c3c;
+    border-radius: 4px;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.field-validation-error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.input-validation-error {
+    border-color: #e74c3c !important;
+}
+
+/* Optional: Add a style for successful validation */
+.field-validation-valid {
+    display: none;
+}
+/* Page Header Styles */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Empty State Styles */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+/* Recipe List Styles */
+.ricetta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+    .ricetta-row:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+.ricetta-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.titolo {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.categoria {
+    color: #666;
+    padding: 0.2rem 0.5rem;
+    background: #e9ecef;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.tipo-cucina {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Detail View Styles */
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.detail-label {
+    flex-grow: 1;
+}
+
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+/* Button Styles */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+    .actions .btn {
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+.add-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+    .add-button:hover {
+        background: #218838;
+        color: white;
+        text-decoration: none;
+    }
+
+.plus-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Pre Element Styles */
+pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    margin: 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+nav ul li a {
+    cursor: pointer;
+    /* your existing styles */
+}
+
+    nav ul li a:hover {
+        cursor: pointer;
+        /* your existing hover styles */
+    }
+/* Remove the red rectangle at the top */
+.validation-summary-errors {
+    display: none;
+}
+
+/* Style form groups and inputs */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Style validation messages */
+.field-validation-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Remove black rectangles on error */
+.input-validation-error {
+    border-color: #dc3545;
+    background-color: #fff;
+}
+/* Dettagli button styles */
+.btn-info {
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #000;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+    .btn-info:hover {
+        opacity: 0.7;
+        color: #000;
+        background: none;
+    }
+
+/* Elimina button styles */
+.btn-danger {
+    background: none;
+    border: none;
+    color: #dc3545;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+    .btn-danger:hover {
+        opacity: 0.7;
+        color: #dc3545;
+        background: none;
+    }
+.filter-container {
+    margin: 20px 0;
+    max-width: 300px;
+}
+
+    .filter-container select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }

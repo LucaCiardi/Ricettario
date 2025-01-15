@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Errore";
+}
+
+<div class="error-container">
+    <h1 class="text-danger">Errore</h1>
+    <h2 class="text-danger">Si è verificato un errore durante l'elaborazione della richiesta.</h2>
+
+    @if (Context.Request.Query["id"].ToString() != string.Empty)
+    {
+        <p>
+            <strong>ID Richiesta:</strong> <code>@Context.Request.Query["id"]</code>
+        </p>
+    }
+
+    @if (System.Diagnostics.Debugger.IsAttached ||
+    Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+    {
+        <div class="development-info">
+            <h3>Modalità Sviluppo</h3>
+            <p>
+                La modalità sviluppo mostra informazioni dettagliate sugli errori verificatisi.
+            </p>
+            <p class="warning">
+                <strong>Attenzione:</strong> La modalità sviluppo non dovrebbe essere attiva in produzione.
+                Potrebbe esporre informazioni sensibili agli utenti finali.
+            </p>
+        </div>
+    }
+</div>
