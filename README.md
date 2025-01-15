@@ -96,7 +96,3 @@ This project was developed as part of the Generation Italy Junior .NET Developer
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Developed as part of Generation Italy's Junior .NET Developer bootcamp.
-
-Citations:
-[1] https://pplx-res.cloudinary.com/image/upload/v1736959606/user_uploads/KrRScobpkkxcnEY/image.jpg
-[2] https://pplx-res.cloudinary.com/image/upload/v1736960620/user_uploads/QeMabBjGVAxamoE/image.jpg
